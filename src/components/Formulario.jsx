@@ -13,7 +13,7 @@ const Noticia = () => {
   const consultarApi = async () => {
     try {
       const respuesta = await fetch(
-        "https://newsdata.io/api/1/news?apikey=pub_1205224bf79acf79975bd3f0035b623fce43a&category=business,entertainment,environment,food,health       "
+        "https://newsdata.io/api/1/news?apikey=pub_120523f77b9cf7a58e538abc449c46fb6a468&category=business    "
       );
       console.log(respuesta);
       const dato = await respuesta.json();
