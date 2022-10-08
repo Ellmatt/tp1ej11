@@ -13,7 +13,7 @@ const Noticia = () => {
   const consultarApi = async () => {
     try {
       const respuesta = await fetch(
-        "https://newsdata.io/api/1/news?apikey=pub_120523f77b9cf7a58e538abc449c46fb6a468&category=business    "
+        "https://newsdata.io/api/1/news?apikey=pub_120523f77b9cf7a58e538abc449c46fb6a468&category=business,entertainment,environment,food,health       "
       );
       console.log(respuesta);
       const dato = await respuesta.json();
@@ -43,7 +43,7 @@ const Noticia = () => {
             </Form.Select>
           </div>
         </Form.Group>
-        <ListaNoticias noticias={noticia}></ListaNoticias>
+        <ListaNoticias ></ListaNoticias>
       </Card>
     </Container>
   );
