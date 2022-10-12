@@ -1,17 +1,21 @@
 import React from "react";
-import { Button, Card } from "react-bootstrap";
+import {Button, Card} from "react-bootstrap";
+
 
 const Noticia = (props) => {
   return (
-    <Card className="w-25">
-      <Card.Img src="https://images.pexels.com/photos/704767/pexels-photo-704767.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></Card.Img>
+   <section className="d-flex justify-content-center">
+    <Card className="w-50 my-3 " >
+      <Card.Img src={props.imagen}></Card.Img>
       <Card.Body>
-        <Card.Subtitle></Card.Subtitle>
-        <Card.Title>titulo</Card.Title>
-        <Card.Text>texto</Card.Text>
+        <Card.Subtitle>{props.subtitulo}</Card.Subtitle>
+        <Card.Title className="text-center">{props.titulo}</Card.Title>
+        <Card.Text>{props.contenido}</Card.Text>
       </Card.Body>
-      <Button variant="primary">Ver Noticia Completa</Button>
+      <Button className='btn btn-primary' href={props.link}>Ver Noticia Completa</Button>
     </Card>
+    
+    </section>
   );
 };
 

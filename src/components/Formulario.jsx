@@ -1,26 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { Container, Card, Form } from "react-bootstrap";
+import { Container,  Form } from "react-bootstrap";
 import ListaNoticias from "./ListaNoticias";
 
 const Noticia = () => {
-  const [noticia, setNoticia] = useState('');
- 
+  const [noticia, setNoticia] = useState([]);
+
 
   useEffect(() => {
     consultarApi();
   }, []);
 
+
   const consultarApi = async () => {
     try {
       const respuesta = await fetch(
-        "https://newsdata.io/api/1/news?apikey=pub_120523f77b9cf7a58e538abc449c46fb6a468&category=business,entertainment,environment,food,health       "
+        'https://newsapi.org/v2/everything?q=keyword&apiKey=e0202bd97de3442dbf2f46e29e2c8ecd'
       );
       console.log(respuesta);
       const dato = await respuesta.json();
 
-      console.log(dato[`results`]);
-      setNoticia(dato["results"]);
-      
+      console.log(dato['articles']);
+      setNoticia(dato['articles']);
+   
     } catch (error) {
       console.log(error);
     }
@@ -28,10 +29,22 @@ const Noticia = () => {
 
   return (
     <Container>
-      <Card>
+      <Form >
         <Form.Group className="mb-3 d-flex justify-content-center">
           <div className="w-100 my-5 ms-5">
             <Form.Label>Buscar por Categoria</Form.Label>
+          </div>
+          <div className="w-100 my-5 me-5">
+            <Form.Select>
+              <option></option>
+              <option>entertaiment</option>
+              <option>environment</option>
+              <option>food</option>
+              <option>health</option>
+            </Form.Select>
+          </div>
+          <div className="w-100 my-5 ms-5">
+            <Form.Label>Buscar por Pais</Form.Label>
           </div>
           <div className="w-100 my-5 me-5">
             <Form.Select>
@@ -43,8 +56,8 @@ const Noticia = () => {
             </Form.Select>
           </div>
         </Form.Group>
-        <ListaNoticias ></ListaNoticias>
-      </Card>
+        <ListaNoticias noticia={noticia} ></ListaNoticias>
+      </Form>
     </Container>
   );
 };
